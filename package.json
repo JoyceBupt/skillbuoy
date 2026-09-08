@@ -1,0 +1,46 @@
+{
+  "name": "skillbuoy",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Inspect and safely update locally installed Agent Skills.",
+  "license": "MIT",
+  "bin": {
+    "skillbuoy": "dist/cli/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json",
+    "lint": "oxlint --max-warnings=0",
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check .",
+    "test": "pnpm run build && vitest run",
+    "check": "pnpm run format:check && pnpm run lint && pnpm run typecheck && pnpm test",
+    "start": "node dist/cli/index.js"
+  },
+  "dependencies": {
+    "commander": "^15.0.0",
+    "proper-lockfile": "^4.1.2",
+    "yaml": "^2.9.0",
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/proper-lockfile": "^4.1.4",
+    "oxfmt": "0.66.0",
+    "oxlint": "1.81.0",
+    "oxlint-tsgolint": "7.0.2001",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "packageManager": "pnpm@11.18.0"
+}
